@@ -2,13 +2,6 @@
 
 #include "scl.h"
 
-// typedef int T;
-// struct NodoSCL
-// {
-//     T info;
-//     struct NodoSCL *next;
-// };
-// typedef struct NodoSCL TipoNodo;
 typedef TipoNodo *TipoLista;
 
 // Operazioni
