@@ -23,23 +23,23 @@ TipoAlbero creaAlbBin(TipoInfoAlbero info, TipoAlbero sx, TipoAlbero dx) {
   return a;
 }
 
-TipoAlbero bin_tree_gen(int depth, int min, int max)
+TipoAlbero bin_tree_regen(int depth, int min, int max, int leaves, int leavespernode)
 {
   if(depth == 0) return albBinVuoto();
   else
   {
-    TipoAlbero a = creaAlbBin(rand() % (max + 1) + min, bin_tree_gen(depth - 1, min, max), bin_tree_gen(depth - 1, min, max));
-    int Nodes = rand() % (2 + 1);
-
-    // if(Nodes == 0)
-    // {
-    //   Bin_Tree_Free(sinistro(a));
-    //   Bin_Tree_Free(destro(a));
-    // } 
-    // else if(Nodes == 1) (rand() % 2 == 0) ? Bin_Tree_Free(sinistro(a)) : Bin_Tree_Free(destro(a));
-    
-    return a;
+    int Value = rand() % (max + 1) + min;
+    TipoAlbero sx = bin_tree_regen(depth - 1, min, max, leaves, leavespernode / 2);
+    TipoAlbero dx = bin_tree_regen(depth - 1, min, max, leaves, leavespernode / 2);
+    return creaAlbBin(Value, sx, dx);
   }
+}
+
+TipoAlbero bin_tree_gen(int depth, int min, int max)
+{
+  int leaves = rand() % (int) pow(2, depth - 1) + 1;
+  printf("leaves: %d \n", leaves);
+  return bin_tree_regen(depth, min, max, leaves,(int) pow(2, depth - 2));
 }
 
 bool estVuoto(TipoAlbero a) {
