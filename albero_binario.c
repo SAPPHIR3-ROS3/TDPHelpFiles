@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -64,8 +65,10 @@ TipoAlbero bin_tree_regen(int depth, int min, int max, int leaves, int leavesper
 
 TipoAlbero bin_tree_gen(int depth, int min, int max)
 {
-  int leaves = (depth > 0 ) ? rand() % (int) pow(2, depth - 1) + 1 : 0;
-  return bin_tree_regen(depth, min, max, leaves,(int) pow(2, depth - 2));
+	int leaves = (depth > 0 ) ? rand() % (int) pow(2, depth - 1) + 1 : 0;
+	int leavespernode = (leaves > 1) ? (int) leaves / 2 : 1;
+	leavespernode = (leaves % 2 == 1) ? leavespernode + 1 : leavespernode; 
+  	return bin_tree_regen(depth, min, max, leaves,(int) pow(2, depth - 2));
 }
 
 bool estVuoto(TipoAlbero a) {
