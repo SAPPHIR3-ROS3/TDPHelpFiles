@@ -29,16 +29,42 @@ TipoAlbero bin_tree_regen(int depth, int min, int max, int leaves, int leavesper
   else
   {
     int Value = rand() % (max + 1) + min;
-    TipoAlbero sx = bin_tree_regen(depth - 1, min, max, leaves, leavespernode / 2);
-    TipoAlbero dx = bin_tree_regen(depth - 1, min, max, leaves, leavespernode / 2);
+    	TipoAlbero sx = albBinVuoto();
+    	TipoAlbero dx = albBinVuoto();
+	 	if(leaves < 2)
+		{
+			if(rand() % 2 == 0) sx = bin_tree_regen(depth - 1, min, max, leaves, leavespernode / 2);
+			else dx = bin_tree_regen(depth - 1, min, max, leaves, leavespernode / 2);
+		}
+		else
+		{
+			int delta = (leaves > leavespernode) ? leavespernode : rand() % (leaves + 1);
+			int leavessx = 0;
+			int leavesdx = 0;
+			
+			if(rand() % 2 == 0)
+			{
+				leavessx = delta;
+				leavesdx = leaves - delta;
+			}
+			else
+			{
+				leavessx = leaves - delta;
+				leavesdx =  delta;
+			}
+			
+			leavespernode = (leaves % 2 == 1) ? leavespernode + 1: leavespernode;
+			sx = bin_tree_regen(depth - 1, min, max, leavessx, (int) leavespernode / 2);
+			dx = bin_tree_regen(depth - 1, min, max, leavesdx, (int) leavespernode / 2);
+			
+		}
     return creaAlbBin(Value, sx, dx);
   }
 }
 
 TipoAlbero bin_tree_gen(int depth, int min, int max)
 {
-  int leaves = rand() % (int) pow(2, depth - 1) + 1;
-  printf("leaves: %d \n", leaves);
+  int leaves = (depth > 0 ) ? rand() % (int) pow(2, depth - 1) + 1 : 0;
   return bin_tree_regen(depth, min, max, leaves,(int) pow(2, depth - 2));
 }
 
