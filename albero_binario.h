@@ -19,6 +19,7 @@ TipoAlbero albBinVuoto();
 TipoAlbero creaAlbBin(TipoInfoAlbero info, TipoAlbero sx, TipoAlbero dx);
 TipoAlbero bin_tree_gen(int depth, int min, int max);
 bool estVuoto(TipoAlbero a);
+bool estFoglia(TipoAlbero a);
 TipoInfoAlbero radice(TipoAlbero a);
 TipoAlbero sinistro(TipoAlbero a);
 TipoAlbero destro(TipoAlbero a);
