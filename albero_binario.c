@@ -67,8 +67,9 @@ TipoAlbero bin_tree_gen(int depth, int min, int max)
 {
 	int leaves = (depth > 0 ) ? rand() % (int) pow(2, depth - 1) + 1 : 0;
 	int leavespernode = (leaves > 1) ? (int) leaves / 2 : 1;
-	leavespernode = (leaves % 2 == 1) ? leavespernode + 1 : leavespernode; 
-  	return bin_tree_regen(depth, min, max, leaves,(int) pow(2, depth - 2));
+	leavespernode = (leaves % 2 == 1) ? leavespernode + 1 : leavespernode;
+  //printf("depth: %d leaves: %d leavespernode: %d\n", depth, leaves, leavespernode);
+  return bin_tree_regen(depth, min, max, leaves,(int) pow(2, depth - 2));
 }
 
 bool estVuoto(TipoAlbero a) {
