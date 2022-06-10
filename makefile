@@ -1,6 +1,15 @@
 CC = gcc
-OPT = -o
+OPT = -lm -o
 
+EXEC = es.exe
+
+ifeq ($(OS),Windows_NT)
+	EXEC = .\es.exe
+else
+	EXEC = ./es.exe
+	
+endif
+	
 all : compile run
 
 
@@ -9,4 +18,4 @@ compile : es.c
 
 run : es.exe
 	clear
-	.\es.exe
+	$(EXEC)
