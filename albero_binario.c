@@ -69,11 +69,16 @@ TipoAlbero bin_tree_gen(int depth, int min, int max)
 	int leavespernode = (leaves > 1) ? (int) leaves / 2 : 1;
 	leavespernode = (leaves % 2 == 1) ? leavespernode + 1 : leavespernode;
   //printf("depth: %d leaves: %d leavespernode: %d\n", depth, leaves, leavespernode);
-  return bin_tree_regen(depth, min, max, leaves,(int) pow(2, depth - 2));
+  return bin_tree_regen(depth, min, max, leaves,leavespernode);
 }
 
 bool estVuoto(TipoAlbero a) {
   return (a == NULL);
+}
+
+bool estFoglia(TipoAlbero a)
+{
+	return (!estVuoto(a) && estVuoto(a->sinistro) && estVuoto(a->destro)) ? true : false;
 }
 
 TipoInfoAlbero radice(TipoAlbero a) {
