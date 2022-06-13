@@ -135,12 +135,12 @@ void stampaParentetica(TipoAlbero a) {
 }
 
 
-void Bin_Tree_Free(TipoAlbero a)
+void Bin_Tree_Free(TipoAlbero * a)
 { // la funzione causa errore motivo ignoto
-  if(!estVuoto(a)) 
+  if(!estVuoto(*a)) 
   {
-    Bin_Tree_Free(a->sinistro);
-    Bin_Tree_Free(a->destro);
-    free(a);
+    Bin_Tree_Free(&((*a)->sinistro));
+    Bin_Tree_Free(&((*a)->destro));
+    free(*a);
   }
 }
