@@ -25,4 +25,4 @@ TipoAlbero sinistro(TipoAlbero a);
 TipoAlbero destro(TipoAlbero a);
 void assegnaRadice(TipoAlbero a, TipoInfoAlbero info);
 void stampaParentetica(TipoAlbero a);
-void Bin_Tree_Free(TipoAlbero a); //la funzione causa erra motivo ignoto
+void Bin_Tree_Free(TipoAlbero * a); //la funzione causa erra motivo ignoto
