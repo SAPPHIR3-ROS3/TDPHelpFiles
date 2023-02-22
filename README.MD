@@ -51,6 +51,6 @@ make
 ```cmd 
 make <azione>
 ```
-### dove azione dovrà essere un simile a
+### dove azione dovrà essere simile a
 
 ![action](/Asset/action.png)
