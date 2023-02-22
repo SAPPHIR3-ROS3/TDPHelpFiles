@@ -6,29 +6,31 @@
 
 #include "matrices.h"
 
-
+// alloca dinamicamente lo spazio per la matrice
 Mat* Mat_alloc(int rows, int cols) {
-  Mat* m = (Mat*)malloc(sizeof(Mat));
+  Mat* m = (Mat*)malloc(sizeof(Mat)); // alloca la memoria per la struct della matrice
   m->rows = rows;
   m->cols = cols;
-  m->row_ptrs = (float**)malloc(rows * sizeof(float*));
+  m->row_ptrs = (float**)malloc(rows * sizeof(float*)); // alloca la memoria per gli array di array
   for(int i = 0; i < m->rows; ++i) {
-    m->row_ptrs[i] = (float*)malloc(m->cols * sizeof(float));
+    m->row_ptrs[i] = (float*)malloc(m->cols * sizeof(float)); // alloca la memoria per righe array
   }
   return m;
 }
 
+// riempie la matrice di valori causali comprasi tra min e max
 Mat* Mat_gen(int rows, int cols, int min, int max)
 {
   
-  Mat* m = Mat_alloc(rows, cols);
-  for(int i = 0; i < m->rows; i++)
+  Mat* m = Mat_alloc(rows, cols); // alloca la matrice
+  for(int i = 0; i < m->rows; i++) 
     for(int j = 0; j < m->cols; j++)
-      m->row_ptrs[i][j] = rand() % (max + 1) + min;
+      m->row_ptrs[i][j] = rand() % (max + 1) + min; // asseggna il valore randomico
 
   return m;
 }
 
+// legge valori dal nome di un file
 Mat* Mat_read(const char *filename) {
   FILE *fp = fopen(filename, "r");
   if(fp == NULL) {
@@ -37,6 +39,7 @@ Mat* Mat_read(const char *filename) {
     return NULL;
   }
 
+  // la matrice viene allocata
   int rows = 0;
   if(fscanf(fp, "%d", &rows) != 1) {
     printf("Errore durante la lettura del file %s, non riesco a leggere il numero di righe... esco!\n", filename);
@@ -57,6 +60,7 @@ Mat* Mat_read(const char *filename) {
     return NULL;
   }
 
+  // la matrice viene inizializata
   Mat *m = Mat_alloc(rows, cols);
   for(int r = 0; r < rows; ++r) {
     for(int c = 0; c < cols; ++c) {
@@ -74,6 +78,7 @@ Mat* Mat_read(const char *filename) {
   return m;
 }
 
+// stampa della matrice in console
 void Mat_print(Mat *m) {
   for(int r = 0; r < m->rows; ++r) {
     for(int c = 0; c < m->cols; ++c) {
@@ -83,6 +88,7 @@ void Mat_print(Mat *m) {
   }
 }
 
+// scrive i valori della matrice su un file
 void Mat_write(const char *filename, Mat *m) {
   FILE *fp = fopen(filename, "w");
   if(fp == NULL) {
@@ -102,6 +108,7 @@ void Mat_write(const char *filename, Mat *m) {
   fclose(fp);
 }
 
+// controlla se la matrice è simmetrica
 bool  Mat_is_symmetric(Mat *m) {
   for(int r = 0; r < m->rows; ++r) {
     for(int c = 0; c < m->cols; ++c) {      
@@ -113,6 +120,7 @@ bool  Mat_is_symmetric(Mat *m) {
   return true;
 }
 
+// normalizza gli elementi della matrice in base alla riga in cui si trovano
 void Mat_normalize_rows(Mat *m) {
   for(int r = 0; r < m->rows; ++r) {
     float squared_sum = 0.0f;
@@ -127,18 +135,20 @@ void Mat_normalize_rows(Mat *m) {
   }
 }
 
+// copia la matrice
 Mat* Mat_clone(Mat *m) {
-  Mat *copy = Mat_alloc(m->rows, m->cols);
+  Mat *copy = Mat_alloc(m->rows, m->cols); // alloca la stessa quantità di memoria della matrice
   
   for(int r = 0; r < copy->rows; ++r) {
     for(int c = 0; c < copy->cols; ++c) {      
-      copy->row_ptrs[r][c] = m->row_ptrs[r][c];
+      copy->row_ptrs[r][c] = m->row_ptrs[r][c]; // copia il valore nella copia
     }
   }
 
   return copy;
 }
 
+// dealloca la memmoria assegnata alla matrice 
 void Mat_free(Mat *m) {  
   for(int i = 0; i < m->rows; ++i) {
     free(m->row_ptrs[i]);
@@ -147,6 +157,7 @@ void Mat_free(Mat *m) {
   free(m);
 }
 
+// somma gli elementi di 2 matrici
 Mat* Mat_sum(Mat *m1, Mat *m2){
 
   if( m1->rows != m2->rows || m1->cols != m2->cols){
@@ -154,7 +165,7 @@ Mat* Mat_sum(Mat *m1, Mat *m2){
     return NULL;
   }
 
-  Mat *output = Mat_alloc(m1->rows, m1->cols);
+  Mat *output = Mat_alloc(m1->rows, m1->cols); // alloca memoria per la matrice risultato per non modificare le matrici originali
 
   for(int r = 0; r < output->rows; ++r) {
     for(int c = 0; c < output->cols; ++c) {     
@@ -165,7 +176,7 @@ Mat* Mat_sum(Mat *m1, Mat *m2){
   return output;
 }
 
-
+// prodotto di matrici
 Mat* Mat_product(Mat *m1, Mat *m2){
 
   if( m1->cols != m2->rows){
@@ -173,7 +184,7 @@ Mat* Mat_product(Mat *m1, Mat *m2){
     return NULL;
   }
 
-  Mat *output = Mat_alloc(m1->rows, m2->cols);
+  Mat *output = Mat_alloc(m1->rows, m2->cols); // alloca memoria per la matrice risultato per non modificare le matrici originali
 
   for(int r = 0; r < output->rows; ++r) {
     for(int c = 0; c < output->cols; ++c) {     
