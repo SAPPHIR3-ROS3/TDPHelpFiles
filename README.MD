@@ -21,10 +21,10 @@ gcc
 ![GCC](/Asset/GCC.png)
 
 -----
-## Guida installazione Make per Windows
+## Guida all'installazione Make per Windows
 
-### questa parte della guida è completamente opzionale ma consiglio comunque di seguirla per far si di non dover scrivere comandi lunghissimi in console.
-### Sfortunamente Windows di default non ha la possibilità di usare i comandi di make che permettono di eseguire uno o più comandi lunghi se non scrivendoli, ma è possibile rimediare molto velocemente:
+### Questa parte della guida è completamente opzionale ma consiglio comunque di seguirla per far sì di non dover scrivere comandi lunghissimi in console.
+### Sfortunamente Windows di base non ha la possibilità di usare i comandi di make che permettono di eseguire uno o più comandi lunghi se non scrivendoli, ma è possibile rimediare molto velocemente:
 
 ### 1. Cerca nella barra di Windows: Powershell e avvialo come amministratore (il comando non funziona se Powershell non è avviato con i permessi di amministratore)
 ![ricerca](/Asset/ricerca.png)
@@ -32,7 +32,7 @@ gcc
 ```cmd
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
-### successivamente per verificare che non ci siano errori digita
+### successivamente, per verificare che non ci siano errori, digita
 ```cmd
 choco -v
 ```
@@ -47,10 +47,10 @@ choco install make
 make
 ```
 ![makeverify](/Asset/makeverify.png)
-### per usare make vi basterà creare un file makefile all'interno della cartella dove vi sono i file .c (soprattutto il main), riempirlo con i vari comandi ed infine digitare il comando
+### per usare make ti basterà creare un file makefile all'interno della cartella dove si trovano questi ultimi .c (soprattutto il main), riempirlo con i vari comandi ed infine digitare il comando
 ```cmd 
 make <azione>
 ```
-### dove azione dovra essere un simile a
+### dove azione dovrà essere un simile a
 
 ![action](/Asset/action.png)
