@@ -1,7 +1,7 @@
 # TDP Help Files
 ## Guida installazione compiler MinGW64 per C/C++ per Windows
 ### se sei qui significa che (comprensibilmente) non vuoi scaricare macchine virtuali di sorta per installare i compilatori di C/C++ per Windows; piccola premessa: tutto il contenuto che scaricherai e installerai tramite questa guida pesa pochi MB.
-### 1. Scarica il pacchetto a questo [link](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z) ed estrarlo dove si preferisce (io consiglio in C:\\)
+### 1. Scarica il pacchetto a questo [link](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-win32/seh/x86_64-8.1.0-release-win32-seh-rt_v6-rev0.7z) ed estrailo dove si preferisce (io consiglio in C:\\)
 ![Location](/Asset/Location.png)
 ### 2. Entra nella cartella appena estratta e poi entra nella cartella `/bin`
 ### 3.Copia il percorso
