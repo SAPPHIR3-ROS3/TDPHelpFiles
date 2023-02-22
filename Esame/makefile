@@ -19,4 +19,3 @@ compile : es.c
 run : es
 	clear
 	./es
-	$(EXEC)

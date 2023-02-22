@@ -4,23 +4,25 @@
 
 #include "coda.h"
 
-
+// genera una coda vuota
 Coda * codaVuota() {
-	Coda *c = (Coda *)malloc(sizeof(Coda));
-	*c = NULL;
-	return c;
+	//Coda *c = (Coda *)malloc(sizeof(Coda));
+	//*c = NULL;
+	return NULL;
 }
 
+// genera una coda di lunghezza length con min<=elementi<=max
 Coda * queue_gen(int Length, int min, int max)
 {
-	Coda *c = codaVuota();
+	Coda *c = codaVuota(); //genera una coda vuota (placeholder)
 
-	for (int i = 0; i < Length; i++)
+	for (int i = 0; i < Length; i++) 
 		inCoda(c, rand() % (max + 1) + min);
 
 	return c;
 }
 
+// controlla se la coda è vuota
 bool estCodaVuota(Coda *c) {
 	if (!c) {
 		puts("errore: null input");
@@ -29,12 +31,15 @@ bool estCodaVuota(Coda *c) {
   return *c == NULL;
 }
 
+// aggiunge un elemento alla fine
 void inCoda(Coda *c , T e) {
-	if (!c) {
+	if (!c)
+	{
 		puts("ERRORE: null input");
 		exit(1);
 	}
-	if (*c == NULL) {
+	if (*c == NULL) 
+	{
 		*c = (TipoNodo *)malloc(sizeof(TipoNodo));
 		(*c)->info = e;
 		(*c)->next = NULL;
@@ -43,7 +48,9 @@ void inCoda(Coda *c , T e) {
 	}
 }
 
-T outCoda(Coda *c) {
+// rimuove il primo elemento dalla coda
+T outCoda(Coda *c) 
+{
 	if (!c) {
 		puts("ERRORE: null input");
 		exit(1);
@@ -60,6 +67,7 @@ T outCoda(Coda *c) {
 	return primo_valore;
 }
 
+// restituisce il primo elemento della coda
 T primoCoda(Coda* c) {
 	if (!c) {
 		puts("ERRORE: null input");
