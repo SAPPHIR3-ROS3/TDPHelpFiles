@@ -14,7 +14,7 @@
 ![Variabili di sistema](/Asset/VariabiliSistema.png)
 ### 7. Clicca ```Nuovo``` e incolla il percorso copiato in precedenza
 ![NuovoPath](/Asset/NuovoPath.png)
-### 8. (facoltativo) Apri il terminale/Powershel/Prompt CMD e digita per verificare che sia tutto sia apposto
+### 8. (facoltativo) Apri il terminale/Powershel/Prompt CMD e digita per verificare che tutto sia apposto
 ```cmd
 gcc
 ```
