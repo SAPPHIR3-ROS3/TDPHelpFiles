@@ -25,10 +25,27 @@ gcc
 
 ### Questa parte della guida è completamente opzionale ma consiglio comunque di seguirla per far sì di non dover scrivere comandi lunghissimi in console.
 ### Sfortunamente Windows di base non ha la possibilità di usare i comandi di make che permettono di eseguire uno o più comandi lunghi se non scrivendoli, ma è possibile rimediare molto velocemente:
-
-### 1. Cerca nella barra di Windows: Powershell e avvialo come amministratore (il comando non funziona se Powershell non è avviato con i permessi di amministratore)
+### METODO PRINCIPALE
+### 1. Cerca nella barra di Windows: Powershell e avvialo come amministratore (il comando potrebbe dare problemi se Powershell non è avviato con i permessi di amministratore)
 ![ricerca](/Asset/ricerca.png)
-### e digita
+### Nelle ultime versioni di Windows 10 e Windows 11 si può installare un programma tramite il comando ```winget```
+### 2. digitare il comando 
+```cmd
+winget install GnuWin32.Make
+```
+![installazione](TODO)
+### ed infine verifica che make funzioni tramite
+![makeverify](/Asset/makeverify.png)
+### per usare make ti basterà creare un file makefile all'interno della cartella dove si trovano questi ultimi .c (soprattutto il main), riempirlo con i vari comandi ed infine digitare il comando
+```cmd 
+make <azione>
+```
+### dove azione dovrà essere simile a
+
+![action](/Asset/action.png)
+
+### METODO ALTERNATIVO
+### Nel caso winget non fosse presente nel sistema o l'installazione non fosse andata a buon fine esiste un altro metodo ma questa volta bisognerà aprire Powershell necessariamente come amministratore e digitare
 ```cmd
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
@@ -52,5 +69,4 @@ make
 make <azione>
 ```
 ### dove azione dovrà essere simile a
-
 ![action](/Asset/action.png)
