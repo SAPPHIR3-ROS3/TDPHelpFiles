@@ -27,7 +27,7 @@ gcc
 
 ### Questa parte della guida è completamente opzionale ma consiglio comunque di seguirla per far sì di non dover scrivere comandi lunghissimi in console.
 ### Sfortunamente Windows di base non ha la possibilità di usare i comandi di make che permettono di eseguire uno o più comandi lunghi se non scrivendoli, ma è possibile rimediare molto velocemente:
-### 1. Cerca nella barra di Windows: Powershell e avvialo come amministratore (il comando potrebbe dare problemi se Powershell non è avviato con i permessi di amministratore)
+### 1. Cerca nella barra di Windows: Powershell e avvialo come amministratore (il comando darà problemi se Powershell non è avviato con i permessi di amministratore)
 ![ricerca](/Asset/ricerca.png)
 ### ed infine verifica che make funzioni tramite
 ```cmd
