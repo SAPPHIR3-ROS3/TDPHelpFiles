@@ -21,7 +21,7 @@ gcc
 ![GCC](/Asset/GCC.png)
 
 -----
-## Guida all'installazione Make per Windows
+## Guida all'installazione Make per Windows (OPZIONALE)
 
 ### Questa parte della guida è completamente opzionale ma consiglio comunque di seguirla per far sì di non dover scrivere comandi lunghissimi in console.
 ### Sfortunamente Windows di base non ha la possibilità di usare i comandi di make che permettono di eseguire uno o più comandi lunghi se non scrivendoli, ma è possibile rimediare molto velocemente:
